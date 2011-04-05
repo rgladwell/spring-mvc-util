@@ -13,6 +13,7 @@
 	<description>Useful utility classes for Spring MVc</description>
 	<url>https://github.com/rgladwell/spring-mvc-util</url>
 	<scm>
+		<url>https://github.com/rgladwell/spring-mvc-util</url>
 		<connection>scm:git:git@github.com:rgladwell/spring-mvc-util.git</connection>
 		<developerConnection>scm:git:git@github.com:rgladwell/spring-mvc-util.git</developerConnection>
 	</scm>
