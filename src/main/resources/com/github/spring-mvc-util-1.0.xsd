@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://wiki.ocp.bskyb.com/wiki/throttle-spring-annotations"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tool="http://www.springframework.org/schema/tool"
+        targetNamespace="http://wiki.ocp.bskyb.com/wiki/throttle-spring-annotations"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <xsd:annotation>
+        <xsd:documentation><![CDATA[
+	    Defines the elements used in the spring-mvc-util project's declarative
+	    infrastructure.
+        ]]></xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="uri-matching-annotation-driven" />
+
+</xsd:schema>
