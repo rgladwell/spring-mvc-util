@@ -16,6 +16,7 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.beans.factory.xml.XmlReaderContext;
 import org.w3c.dom.Element;
 
+import com.github.spring.mvc.util.handler.UriMatchingHandlerInterceptorInterceptor;
 import com.github.spring.mvc.util.handler.UriMatchingStaticMethodMatcherPointcut;
 
 public class UriMatchingAnnotationDrivenBeanDefinitionParser implements BeanDefinitionParser {
@@ -62,7 +63,7 @@ public class UriMatchingAnnotationDrivenBeanDefinitionParser implements BeanDefi
      * @return Reference to the {@link MethodInterceptor}. Should never be null.
      */
     protected RuntimeBeanReference setupInterceptor(Element element, ParserContext parserContext, Object elementSource) {
-        final RootBeanDefinition interceptor = new RootBeanDefinition(UriMatchingStaticMethodMatcherPointcut.class);
+        final RootBeanDefinition interceptor = new RootBeanDefinition(UriMatchingHandlerInterceptorInterceptor.class);
         interceptor.setSource(elementSource);
         interceptor.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
 
