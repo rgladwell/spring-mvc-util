@@ -36,7 +36,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testWithoutExcludeOrInclude() throws Throwable {
-        when(request.getServletPath()).thenReturn("/uri");
+        when(request.getRequestURI()).thenReturn("/uri");
 
         Object result = interceptor.invoke(invocation);
 
@@ -46,7 +46,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testMatchingExclude() throws Throwable {
-        when(request.getServletPath()).thenReturn("/exclude");
+        when(request.getRequestURI()).thenReturn("/exclude");
 
         Object result = interceptor.invoke(invocation);
 
@@ -56,7 +56,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testMatchingInclude() throws Throwable {
-        when(request.getServletPath()).thenReturn("/include");
+        when(request.getRequestURI()).thenReturn("/include");
 
         Object result = interceptor.invoke(invocation);
 

@@ -22,7 +22,7 @@ public class UriMatchingHandlerInterceptorInterceptor implements MethodIntercept
             for(Object argument : invocation.getArguments()) {
                 if(argument instanceof HttpServletRequest) {
                     HttpServletRequest request = (HttpServletRequest) argument;
-                    uri = request.getServletPath();
+                    uri = request.getRequestURI();
                 }
             }
 
