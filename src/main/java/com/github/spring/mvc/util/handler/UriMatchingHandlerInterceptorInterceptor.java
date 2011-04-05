@@ -45,7 +45,7 @@ public class UriMatchingHandlerInterceptorInterceptor implements MethodIntercept
                             log.trace("Found matching exclude=[" + excludePath + "] for uri=[" + uri + "]: halt processing");
                         }
 
-                        return false;
+                        return true;
                     }
                 }
             }

@@ -1,6 +1,5 @@
 package com.github.spring.mvc.util.handler;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.stub;
 import static org.mockito.Mockito.verify;
@@ -38,30 +37,27 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
     public void testWithoutExcludeOrInclude() throws Throwable {
         when(request.getRequestURI()).thenReturn("/uri");
 
-        Object result = interceptor.invoke(invocation);
+        interceptor.invoke(invocation);
 
         verify(invocation).proceed();
-        assertEquals(Boolean.TRUE, result);
     }
 
     @Test
     public void testMatchingExclude() throws Throwable {
         when(request.getRequestURI()).thenReturn("/exclude");
 
-        Object result = interceptor.invoke(invocation);
+        interceptor.invoke(invocation);
 
         verify(invocation, never()).proceed();
-        assertEquals(Boolean.FALSE, result);
     }
 
     @Test
     public void testMatchingInclude() throws Throwable {
         when(request.getRequestURI()).thenReturn("/include");
 
-        Object result = interceptor.invoke(invocation);
+        interceptor.invoke(invocation);
 
         verify(invocation).proceed();
-        assertEquals(Boolean.TRUE, result);
     }
 
 }
