@@ -22,7 +22,7 @@ public class URIMatchingHandlerInterceptorAdapterTest {
     private static final String NESTED_MATCHER = "/test/*";
     private static final String INVALID_MATCHER = "invalid";
     private static final String NON_MATCHING_NESTED_PATH_URI = "/test2/uri";
-    private static final String SUFFIX_URI = "uri.html";
+    private static final String SUFFIX_URI = "/uri.html";
     private static final String SUFFIX_MATCHER = "*.html";
 
     private TestURIMatchingHandlerInterceptor handlerInterceptor;
@@ -106,7 +106,7 @@ public class URIMatchingHandlerInterceptorAdapterTest {
 
         boolean result = handlerInterceptor.preHandle(request, response, this);
 
-        assertTrue(result);
+        assertFalse(result);
     }
 
     @Test
