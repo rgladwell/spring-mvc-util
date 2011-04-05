@@ -19,6 +19,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Includes({ "/include" })
 @Excludes({ "/exclude" })
-public class TestUriMatchingHandlerInterceptor extends HandlerInterceptorAdapter {
+public class UriMatchingHandlerInterceptor extends HandlerInterceptorAdapter {
 
 }

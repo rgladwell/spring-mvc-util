@@ -43,7 +43,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
     @Before
     public void setUp() throws Throwable {
         interceptor = new UriMatchingHandlerInterceptorInterceptor();
-        when(invocation.getThis()).thenReturn(new TestUriMatchingHandlerInterceptor());
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(invocation.getArguments()).thenReturn(new Object[] { request });
         stub(invocation.proceed()).toReturn(Boolean.TRUE);
     }
