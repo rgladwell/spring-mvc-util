@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<xsd:schema xmlns="http://wiki.ocp.bskyb.com/wiki/throttle-spring-annotations"
+<xsd:schema xmlns="https://github.com/rgladwell/spring-mvc-util"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:tool="http://www.springframework.org/schema/tool"
-        targetNamespace="http://github.com/rgladwell/spring-mvc-util"
+        targetNamespace="https://github.com/rgladwell/spring-mvc-util"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
