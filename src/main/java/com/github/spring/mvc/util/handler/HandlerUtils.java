@@ -17,6 +17,8 @@ package com.github.spring.mvc.util.handler;
 
 public class HandlerUtils {
 
+    private HandlerUtils() {}
+
     // Matching code copied from org.apache.catalina.core.ApplicationFilterFactory.matchFiltersURL
     public static boolean servletUrlPatternMatch(String pattern, String uri) {
         // Case 1 - Exact Match
