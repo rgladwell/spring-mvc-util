@@ -3,6 +3,17 @@ spring-mvc-utils
 
 Useful utility classes for Spring MVC
 
+Installation
+------------
+
+To use spring-mvc-utils simply add the following to your pom.xml file:
+
+    <dependency>
+      <groupId>com.github</groupId>
+      <artifactId>spring-mvc-util</artifactId>
+      <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+
 URI matching Handler Interceptors
 ---------------------------------
 
