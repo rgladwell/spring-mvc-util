@@ -17,8 +17,8 @@ package com.github.spring.mvc.util.handler;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-@Includes({ "/include" })
-@Excludes({ "/exclude" })
+@Includes({ "/include", "/include/*", "*.html" })
+@Excludes({ "/exclude", "/exclude/*", "*.jsp" })
 public class UriMatchingHandlerInterceptor extends HandlerInterceptorAdapter {
 
 }
