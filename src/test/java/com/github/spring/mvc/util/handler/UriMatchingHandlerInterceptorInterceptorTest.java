@@ -43,13 +43,13 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
     @Before
     public void setUp() throws Throwable {
         interceptor = new UriMatchingHandlerInterceptorInterceptor();
-        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(invocation.getArguments()).thenReturn(new Object[] { request });
         stub(invocation.proceed()).toReturn(Boolean.TRUE);
     }
 
     @Test
     public void testWithoutExcludeOrInclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/uri");
 
         interceptor.invoke(invocation);
@@ -59,6 +59,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testMatchingExclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/exclude");
 
         interceptor.invoke(invocation);
@@ -68,6 +69,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testMatchingInclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/include");
 
         interceptor.invoke(invocation);
@@ -77,6 +79,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testWildcardExclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/exclude/anything");
 
         interceptor.invoke(invocation);
@@ -86,6 +89,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testWildcardInclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/include/anything");
 
         interceptor.invoke(invocation);
@@ -95,6 +99,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testWildcardSuffixExclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/anything.jsp");
 
         interceptor.invoke(invocation);
@@ -104,6 +109,7 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testWildcardSuffixInclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/anything.html");
 
         interceptor.invoke(invocation);
@@ -113,10 +119,22 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
     @Test
     public void testExcludeOveridesInclude() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
         when(request.getRequestURI()).thenReturn("/include/anything.jsp");
 
         interceptor.invoke(invocation);
 
         verify(invocation, never()).proceed();
     }
+    @Test
+
+    public void testExcludeEverything() throws Throwable {
+        when(invocation.getThis()).thenReturn(new WildcardUriMatchingHandlerInterceptor());
+        when(request.getRequestURI()).thenReturn("/include/anything.jsp");
+
+        interceptor.invoke(invocation);
+
+        verify(invocation, never()).proceed();
+    }
+
 }
