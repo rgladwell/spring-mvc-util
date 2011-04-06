@@ -3,14 +3,14 @@
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>5</version>
+		<version>7</version>
 	</parent>
-	<groupId>com.github</groupId>
+	<groupId>com.github.rgladwell</groupId>
 	<artifactId>spring-mvc-util</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.1-SNAPSHOT</version>
 	<name>Spring MVC Utils</name>
-	<description>Useful utility classes for Spring MVc</description>
+	<description>Useful utility classes for Spring MVC</description>
 	<url>https://github.com/rgladwell/spring-mvc-util</url>
 	<scm>
 		<url>git@github.com:rgladwell/spring-mvc-util.git</url>
