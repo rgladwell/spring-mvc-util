@@ -21,6 +21,10 @@
 		<system>Github</system>
 		<url>https://github.com/rgladwell/spring-mvc-util/issues</url>
 	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://rgladwell.ci.cloudbees.com/job/Spring%20MVC%20Utils/</url>
+	</ciManagement>
 	<inceptionYear>2011</inceptionYear>
 	<developers>
 		<developer>
