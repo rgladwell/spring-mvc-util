@@ -41,18 +41,6 @@ public class UriMatchingHandlerInterceptorInterceptor implements MethodIntercept
                 }
             }
 
-            if(includes != null) {
-                for (String includePath : includes.value()) {
-                    if(HandlerUtils.servletUrlPatternMatch(includePath, uri)) {
-                        if(log.isTraceEnabled()) {
-                            log.trace("Found matching include=[" + includePath + "] for uri=[" + uri + "]: continue processing");
-                        }
-
-                        return invocation.proceed();
-                    }
-                }
-            }
-
             if(excludes != null) {
                 for (String excludePath : excludes.value()) {
                     if(HandlerUtils.servletUrlPatternMatch(excludePath, uri)) {
@@ -61,6 +49,18 @@ public class UriMatchingHandlerInterceptorInterceptor implements MethodIntercept
                         }
 
                         return true;
+                    }
+                }
+            }
+
+            if(includes != null) {
+                for (String includePath : includes.value()) {
+                    if(HandlerUtils.servletUrlPatternMatch(includePath, uri)) {
+                        if(log.isTraceEnabled()) {
+                            log.trace("Found matching include=[" + includePath + "] for uri=[" + uri + "]: continue processing");
+                        }
+
+                        return invocation.proceed();
                     }
                 }
             }
