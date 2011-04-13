@@ -8,7 +8,7 @@
 	<groupId>com.github.rgladwell</groupId>
 	<artifactId>spring-mvc-util</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>Spring MVC Utils</name>
 	<description>Useful utility classes for Spring MVC</description>
 	<url>https://github.com/rgladwell/spring-mvc-util</url>
