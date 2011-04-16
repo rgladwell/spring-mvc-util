@@ -8,7 +8,7 @@
 	<groupId>com.github.rgladwell</groupId>
 	<artifactId>spring-mvc-util</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>Spring MVC Utils</name>
 	<description>Useful utility classes for Spring MVC</description>
 	<url>https://github.com/rgladwell/spring-mvc-util</url>
@@ -54,19 +54,6 @@
 					<target>1.6</target>
 					<optimize>true</optimize>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
