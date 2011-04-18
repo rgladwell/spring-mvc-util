@@ -15,7 +15,7 @@
  */
 package com.github.spring.mvc.util.handler;
 
-public class HandlerUtils {
+public final class HandlerUtils {
 
     private HandlerUtils() {}
 

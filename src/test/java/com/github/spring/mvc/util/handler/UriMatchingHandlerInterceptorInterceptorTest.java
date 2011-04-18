@@ -20,7 +20,10 @@ import static org.mockito.Mockito.stub;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Method;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.junit.Before;
@@ -28,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.web.servlet.ModelAndView;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UriMatchingHandlerInterceptorInterceptorTest {
@@ -45,6 +49,8 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
         interceptor = new UriMatchingHandlerInterceptorInterceptor();
         when(invocation.getArguments()).thenReturn(new Object[] { request });
         stub(invocation.proceed()).toReturn(Boolean.TRUE);
+        Method method = UriMatchingHandlerInterceptor.class.getMethod("preHandle", HttpServletRequest.class, HttpServletResponse.class, Object.class);
+        when(invocation.getMethod()).thenReturn(method);
     }
 
     @Test
@@ -136,5 +142,39 @@ public class UriMatchingHandlerInterceptorInterceptorTest {
 
         verify(invocation, never()).proceed();
     }
+
+    @Test
+    public void testInterceptOnlyForHandlerInterceptorMethods() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
+        when(request.getRequestURI()).thenReturn("/exclude");
+        when(invocation.getMethod()).thenReturn(UriMatchingHandlerInterceptor.class.getMethod("doNotIntercept"));
+
+        interceptor.invoke(invocation);
+
+        verify(invocation).proceed();
+    }
+
+    @Test
+    public void testInterceptOnlyForPostHandle() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
+        when(request.getRequestURI()).thenReturn("/exclude");
+        when(invocation.getMethod()).thenReturn(UriMatchingHandlerInterceptor.class.getMethod("postHandle", HttpServletRequest.class, HttpServletResponse.class, Object.class, ModelAndView.class));
+
+        interceptor.invoke(invocation);
+
+        verify(invocation, never()).proceed();
+    }
+
+    @Test
+    public void testInterceptOnlyForAfterCompletion() throws Throwable {
+        when(invocation.getThis()).thenReturn(new UriMatchingHandlerInterceptor());
+        when(request.getRequestURI()).thenReturn("/exclude");
+        when(invocation.getMethod()).thenReturn(UriMatchingHandlerInterceptor.class.getMethod("afterCompletion", HttpServletRequest.class, HttpServletResponse.class, Object.class, Exception.class));
+
+        interceptor.invoke(invocation);
+
+        verify(invocation, never()).proceed();
+    }
+
 
 }

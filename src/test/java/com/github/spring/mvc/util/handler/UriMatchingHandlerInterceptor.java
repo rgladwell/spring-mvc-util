@@ -21,4 +21,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 @Excludes({ "/exclude", "/exclude/*", "*.jsp" })
 public class UriMatchingHandlerInterceptor extends HandlerInterceptorAdapter {
 
+    public void doNotIntercept() {
+
+    }
+
 }
