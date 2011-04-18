@@ -11,7 +11,7 @@ To use spring-mvc-utils simply add the following to your pom.xml file:
     <dependency>
       <groupId>com.github.rgladwell</groupId>
       <artifactId>spring-mvc-util</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.5</version>
     </dependency>
 
 URI matching Handler Interceptors
