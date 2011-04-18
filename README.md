@@ -48,7 +48,7 @@ To enable this feature you must use the uri-matching-annotation-driven is used i
 	       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	                http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	                https://github.com/rgladwell/spring-mvc-util
-	                https://github.com/rgladwell/spring-mvc-util/raw/src/main/resources/com/github/spring-mvc-util-1.0.xsd">
+	                https://github.com/rgladwell/spring-mvc-util/raw/src/main/resources/com/github/rgladwell/spring-mvc-util-1.0.xsd">
 	
 		<mvc-util:uri-matching-annotation-driven />
 	
