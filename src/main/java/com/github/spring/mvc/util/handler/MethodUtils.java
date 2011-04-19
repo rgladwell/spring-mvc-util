@@ -16,14 +16,13 @@
 package com.github.spring.mvc.util.handler;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public final class MethodUtils {
 
     private MethodUtils() { }
 
     /**
-     * Check two methods reflectively to see if one is overloading the other
+     * Check two methods reflectively to see if one has overriden the other
      * Note that the parameter ordering is important if one method is higher in
      * the class hiearchy then the other. If this is the case, make sure the
      * method higher up in the chain is the first parameter. Otherwise, the
@@ -35,26 +34,8 @@ public final class MethodUtils {
      *            method
      * @return
      */
-    public static boolean isOverloaded(Method higher, Method lower) {
-        return namesAreEqual(higher, lower) && returnTypesAreEqualOrCovariant(higher, lower)
-        && isNotInterfaceImplementation(higher, lower) && isNotOverridden(higher, lower);
-    }
-
-    private static boolean isNotOverridden(Method higher, Method lower) {
-        if (isOverridden(higher, lower)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * @param higher
-     * @param lower
-     * @return true if lower overrides higher
-     */
-    private static boolean isOverridden(Method higher, Method lower) {
-        return declaringClassIsAssignableFrom(higher, lower) && declaringClassIsNotAnInterface(higher)  && parametersAreEqual(higher, lower);
+    public static boolean isOverriden(Method higher, Method lower) {
+        return namesAreEqual(higher, lower) && returnTypesAreEqualOrCovariant(higher, lower);
     }
 
     /**
@@ -66,30 +47,6 @@ public final class MethodUtils {
     private static boolean declaringClassIsAssignableFrom(Method first, Method second) {
         return first.getDeclaringClass().isAssignableFrom(second.getDeclaringClass());
 
-    }
-
-    /**
-     * We have to make sure we don't mistake standard interface implementation
-     * (where first method is on an interface and the params are equal) for
-     * overloading.
-     * 
-     * @param higher
-     * @param lower
-     * @return
-     */
-    private static boolean isNotInterfaceImplementation(Method higher, Method lower) {
-        return !(declaringClassIsAnInterface(higher) && parametersAreEqual(higher, lower));
-    }
-
-    /**
-     * check deep equality on parameters of two methods
-     * 
-     * @param first
-     * @param second
-     * @return
-     */
-    private static boolean parametersAreEqual(Method first, Method second) {
-        return Arrays.deepEquals(first.getParameterTypes(), second.getParameterTypes());
     }
 
     /**
@@ -108,14 +65,6 @@ public final class MethodUtils {
      */
     private static boolean namesAreEqual(Method first, Method second) {
         return first.getName().equals(second.getName());
-    }
-
-    private static boolean declaringClassIsAnInterface(Method method) {
-        return method.getDeclaringClass().isInterface();
-    }
-
-    private static boolean declaringClassIsNotAnInterface(Method method) {
-        return !declaringClassIsAnInterface(method);
     }
 
 }

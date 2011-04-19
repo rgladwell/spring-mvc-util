@@ -96,55 +96,55 @@ public class MethodUtilsTest {
 
     @Test
     public void testTwoSimpleOverloadedMethodsOnSameClass() throws Exception {
-        assertTrue(MethodUtils.isOverloaded(returnsStringNoParameters, returnsStringOneParameter));
-        assertTrue(MethodUtils.isOverloaded(returnsStringOneParameter, returnsStringNoParameters));
+        assertTrue(MethodUtils.isOverriden(returnsStringNoParameters, returnsStringOneParameter));
+        assertTrue(MethodUtils.isOverriden(returnsStringOneParameter, returnsStringNoParameters));
     }
 
     @Test
     public void testMoreSpecificMethodOnConcreteClassOverloadsInterfaceMethods() throws Exception {
-        assertTrue(MethodUtils.isOverloaded(returnsObjectNoParametersOnInterfaceType, returnsStringOneParameter));
+        assertTrue(MethodUtils.isOverriden(returnsObjectNoParametersOnInterfaceType, returnsStringOneParameter));
     }
 
     @Test
-    public void testInterfaceImplementationIsNotOverloading() throws Exception {
-        assertFalse(MethodUtils.isOverloaded(returnsObjectNoParametersOnInterfaceType, returnsStringNoParameters));
+    public void testInterfaceImplementationIsOverloading() throws Exception {
+        assertTrue(MethodUtils.isOverriden(returnsObjectNoParametersOnInterfaceType, returnsStringNoParameters));
     }
 
     @Test
     public void testIsNotOverloadingForDifferentNamesOnSameClass() throws Exception {
-        assertFalse(MethodUtils.isOverloaded(returnsStringNoParameters, returnsObjectNoParametersDifferentName));
-        assertFalse(MethodUtils.isOverloaded(returnsStringOneParameter, returnsObjectNoParametersDifferentName));
+        assertFalse(MethodUtils.isOverriden(returnsStringNoParameters, returnsObjectNoParametersDifferentName));
+        assertFalse(MethodUtils.isOverriden(returnsStringOneParameter, returnsObjectNoParametersDifferentName));
     }
 
     @Test
     public void testIsNotOverloadingForDifferentNamesInterfaceAgainstConcrete() throws Exception {
-        assertFalse(MethodUtils.isOverloaded(returnsObjectNoParametersOnInterfaceType, returnsObjectNoParametersDifferentName));
+        assertFalse(MethodUtils.isOverriden(returnsObjectNoParametersOnInterfaceType, returnsObjectNoParametersDifferentName));
     }
 
     @Test
-    public void testOverridingIsNotOverloading() throws Exception {
-        assertFalse(MethodUtils.isOverloaded(returnsStringNoParameters, returnsStringNoParametersOnSubClass));
+    public void testOverridingIsOverloading() throws Exception {
+        assertTrue(MethodUtils.isOverriden(returnsStringNoParameters, returnsStringNoParametersOnSubClass));
     }
 
     @Test
     public void testMethodOnSubclassOverloadsInterfaceMethod() throws Exception {
-        assertTrue(MethodUtils.isOverloaded(returnsObjectNoParametersOnInterfaceType, returnsObjectThreeParametersOnSubClass));
+        assertTrue(MethodUtils.isOverriden(returnsObjectNoParametersOnInterfaceType, returnsObjectThreeParametersOnSubClass));
     }
 
     @Test
     public void testMethodOnSubclassOverloadsMethodOnSameClass() throws Exception {
-        assertTrue(MethodUtils.isOverloaded(returnsStringNoParametersOnSubClass, returnsObjectThreeParametersOnSubClass));
-        assertTrue(MethodUtils.isOverloaded(returnsObjectThreeParametersOnSubClass, returnsStringNoParametersOnSubClass));
+        assertTrue(MethodUtils.isOverriden(returnsStringNoParametersOnSubClass, returnsObjectThreeParametersOnSubClass));
+        assertTrue(MethodUtils.isOverriden(returnsObjectThreeParametersOnSubClass, returnsStringNoParametersOnSubClass));
     }
 
     @Test
     public void testMethodOnSubclassOverloadsMethodOnSuperClass() throws Exception {
-        assertTrue(MethodUtils.isOverloaded(returnsStringOneParameter, returnsObjectThreeParametersOnSubClass));
+        assertTrue(MethodUtils.isOverriden(returnsStringOneParameter, returnsObjectThreeParametersOnSubClass));
     }
 
     @Test
     public void testMethodOnSubclassDoesNotOverloadMethodOfDifferentNameOnSuperClass() throws Exception {
-        assertFalse(MethodUtils.isOverloaded(returnsObjectNoParametersDifferentName, returnsObjectThreeParametersOnSubClass));
+        assertFalse(MethodUtils.isOverriden(returnsObjectNoParametersDifferentName, returnsObjectThreeParametersOnSubClass));
     }
 
 }
